@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FarmaPlus RD | Farmacia Online Premium</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="loader" id="loader"><div class="pulse">✚</div><p>Cargando FarmaPlus RD...</p></div>
+  <div class="topbar">🚚 Entrega express en Santiago y Santo Domingo · Demo académica PUCMM · Compra segura</div>
+
+  <header class="header" id="header">
+    <a class="brand" href="#">
+      <div class="brand-icon">✚</div>
+      <div><h1>FarmaPlus<span>RD</span></h1><p>Tu salud, a un clic de distancia</p></div>
+    </a>
+    <div class="search">
+      <input id="searchInput" placeholder="Buscar medicamentos, vitaminas, equipos..." oninput="searchProducts()" />
+      <button onclick="searchProducts()">Buscar</button>
+    </div>
+    <div class="header-actions">
+      <button onclick="toggleTheme()" title="Modo oscuro">🌙</button>
+      <button onclick="openLogin()" title="Cuenta">👤</button>
+      <button class="cart-btn" onclick="toggleCart()">🛒 <span id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <a href="#inicio">Inicio</a><a href="#categorias">Categorías</a><a href="#ofertas">Ofertas</a><a href="#productos">Productos</a><a href="#servicios">Servicios</a><a href="#contacto">Contacto</a>
+  </nav>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-text reveal">
+        <span class="pill">Farmacia online dominicana</span>
+        <h2>Salud, bienestar y medicamentos a un clic</h2>
+        <p>Compra medicamentos de venta libre, vitaminas, productos de cuidado personal y equipos médicos básicos con entrega rápida, carrito interactivo y asesoría farmacéutica en línea.</p>
+        <div class="hero-buttons">
+          <a href="#productos" class="btn primary">Comprar ahora</a>
+          <a href="#contacto" class="btn secondary">Consultar farmacéutico</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>2h</strong><span>Entrega express</span></div>
+          <div><strong>12%</strong><span>Suscripción mensual</span></div>
+          <div><strong>24/7</strong><span>Pedidos online</span></div>
+        </div>
+      </div>
+      <div class="hero-img reveal"><img src="assets/hero.png" alt="Farmacia online FarmaPlus RD" /></div>
+    </section>
+
+    <section id="categorias" class="section">
+      <div class="section-title reveal"><span>Categorías</span><h2>Compra según tu necesidad</h2></div>
+      <div class="category-grid">
+        <article class="reveal" onclick="filterProducts('Medicamentos OTC')"><img src="assets/medicamentos.png" /><h3>Medicamentos</h3><p>Productos OTC para uso común.</p></article>
+        <article class="reveal" onclick="filterProducts('Vitaminas')"><img src="assets/vitaminas.png" /><h3>Vitaminas</h3><p>Suplementos y bienestar diario.</p></article>
+        <article class="reveal" onclick="filterProducts('Cuidado Personal')"><img src="assets/cuidado.png" /><h3>Cuidado personal</h3><p>Piel, bebé, higiene y cuidado capilar.</p></article>
+        <article class="reveal" onclick="filterProducts('Equipos Médicos')"><img src="assets/equipos.png" /><h3>Equipos médicos</h3><p>Control de salud en casa.</p></article>
+      </div>
+    </section>
+
+    <section id="ofertas" class="deal reveal">
+      <div><span class="pill">Oferta de lanzamiento</span><h2>Suscripción mensual con 12% de descuento</h2><p>Ideal para pacientes que compran medicamentos o suplementos de forma recurrente. Incluye recordatorios y reposición automática.</p></div>
+      <button onclick="toast('Suscripción demo activada')">Activar demo</button>
+    </section>
+
+    <section id="productos" class="section products-section">
+      <div class="section-title reveal"><span>Tienda online</span><h2>Productos destacados</h2></div>
+      <div class="filters reveal">
+        <button onclick="filterProducts('Todos')">Todos</button>
+        <button onclick="filterProducts('Medicamentos OTC')">Medicamentos</button>
+        <button onclick="filterProducts('Vitaminas')">Vitaminas</button>
+        <button onclick="filterProducts('Cuidado Personal')">Cuidado</button>
+        <button onclick="filterProducts('Equipos Médicos')">Equipos</button>
+      </div>
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+
+    <section id="servicios" class="section services-section">
+      <div class="section-title reveal"><span>Servicios</span><h2>Más que una farmacia online</h2></div>
+      <div class="service-grid">
+        <div class="service-card reveal"><b>🚚</b><h3>Entrega express</h3><p>Pedidos en menos de 2 horas en zonas disponibles.</p></div>
+        <div class="service-card reveal"><b>💬</b><h3>Chat farmacéutico</h3><p>Orientación en línea para productos de venta libre.</p></div>
+        <div class="service-card reveal"><b>🔔</b><h3>Recordatorios</h3><p>Alertas para medicamentos recurrentes.</p></div>
+        <div class="service-card reveal"><b>🏥</b><h3>Canal B2B</h3><p>Botiquines y abastecimiento para empresas y clínicas.</p></div>
+      </div>
+    </section>
+
+    <section class="tracking reveal">
+      <div><span class="pill">Seguimiento</span><h2>Rastreo visual del pedido</h2><p>Simulación del estado de entrega con preparación, despacho y llegada al cliente.</p><button onclick="trackOrder()">Simular pedido</button></div>
+      <div class="track-card"><div class="track-step active">Preparando</div><div class="track-step active">Despachado</div><div class="track-step">Entregado</div></div>
+    </section>
+
+    <section id="contacto" class="section contact">
+      <div class="reveal"><span class="pill">Asesoría</span><h2>Consulta farmacéutica</h2><p>Formulario demo para mostrar cómo un cliente puede solicitar orientación desde la web.</p></div>
+      <form class="contact-form reveal" onsubmit="sendForm(event)">
+        <input placeholder="Nombre completo" required />
+        <input type="email" placeholder="Correo electrónico" required />
+        <select required><option value="">Tipo de consulta</option><option>Medicamento</option><option>Vitaminas</option><option>Cuidado personal</option><option>Equipo médico</option></select>
+        <textarea placeholder="Escribe tu consulta..." required></textarea>
+        <button>Enviar consulta</button>
+      </form>
+    </section>
+  </main>
+
+  <aside id="cartPanel" class="cart-panel">
+    <div class="cart-head"><h3>Carrito</h3><button onclick="toggleCart()">✕</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-total">
+      <p>Subtotal: RD$<span id="subtotal">0</span></p>
+      <p>ITBIS demo: RD$<span id="tax">0</span></p>
+      <h3>Total: RD$<span id="total">0</span></h3>
+      <button onclick="checkout()">Finalizar compra</button>
+    </div>
+  </aside>
+
+  <div id="loginModal" class="modal"><div class="modal-box"><button class="close" onclick="openLogin()">✕</button><h2>Cuenta FarmaPlus RD</h2><input placeholder="Correo" /><input type="password" placeholder="Contraseña" /><button onclick="openLogin()">Entrar</button></div></div>
+  <button class="chat" onclick="toast('Chat demo: Hola, ¿en qué podemos ayudarte?')">💬</button>
+  <div id="toast" class="toast"></div>
+
+  <footer class="footer">
+    <div><h3>FarmaPlus<span>RD</span></h3><p>Proyecto académico E-Business · PUCMM 2026</p></div>
+    <p>B2C · B2B · M-Commerce · Suscripción</p>
+    <p>Joshua Paulino · Gerluis Marte</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
